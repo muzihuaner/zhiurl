@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONArray
+import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.DataOutputStream
 import java.io.InputStreamReader
@@ -20,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         shorturl.setOnClickListener {
             sendRequestWithHttpURLConnection()
+        }
+        clearurl.setOnClickListener {
+            inputurl.setText("")
         }
     }
 
@@ -52,7 +56,6 @@ class MainActivity : AppCompatActivity() {
                 if (response!=null){
                     parseJSONWithObject(response.toString())
                 }
-//                showResponse(response.toString())
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {
@@ -63,14 +66,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun parseJSONWithObject(jsonData: String) {
         try {
-            val jsonArray= JSONArray(jsonData)
-            for (i in 0 until jsonArray.length()){
-                val jsonObject=jsonArray.getJSONObject(i)
+            val jsonObject= JSONObject(jsonData)
                 val static=jsonObject.getString("status")
                 val getshorturl="https://zhiurl.cn"+jsonObject.getString("key")
                 Log.d("MainActivity", "status is $static")
                 Log.d("MainActivity", "shorturl is $getshorturl")
-            }
+                 showResponse(getshorturl)
 
         }catch (e:Exception){
             e.printStackTrace()
@@ -80,7 +81,7 @@ class MainActivity : AppCompatActivity() {
     private fun showResponse(response: String) {
         runOnUiThread {
 //            在这里进行UI操作，将结果显示在界面上
-            ResponseText.text = response
+            ResponseText.setText(response)
         }
     }
 }
