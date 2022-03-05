@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="80pt"
+        app:srcCompat="@drawable/logo" />
+
+    <TableLayout
+        android:id="@+id/TableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:stretchColumns="0,3"
+        android:gravity="center_vertical"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@drawable/boder"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/url"/>
+            <EditText
+                android:id="@+id/inputurl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"/>
+
+            <TextView
+                android:id="@+id/ResponseText"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:minWidth="150dp" />
+        </LinearLayout>
+
+        <TableRow>
+            <TextView />
+
+            <Button
+                android:id="@+id/shorturl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="缩短！"
+               android:layout_marginRight="20pt"
+                />
+
+            <Button
+                android:id="@+id/clearurl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清除"/>
+            <TextView />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/_2021" />
+
+
+</LinearLayout>
