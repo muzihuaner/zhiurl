@@ -5,15 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+
+    >
 
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="80pt"
-        app:srcCompat="@drawable/logo" />
+
 
     <TableLayout
         android:id="@+id/TableLayout1"
@@ -26,27 +23,42 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:background="@drawable/boder"
+            android:layout_width="wrap_content"
             >
-
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="80dp"
+                app:srcCompat="@drawable/logo" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/url"/>
+                android:text="@string/url"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                />
             <EditText
                 android:id="@+id/inputurl"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minWidth="150dp"/>
+                android:minWidth="150dp"
+                android:hint="https://"
+                android:layout_gravity="center_horizontal"
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/shortlater"/>
+                android:text="@string/shortlater"
+                android:layout_gravity="center_horizontal"
+                />
             <EditText
                 android:id="@+id/ResponseText"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minWidth="150dp" />
+                android:minWidth="150dp"
+                android:layout_gravity="center_horizontal"
+                />
         </LinearLayout>
 
         <TableRow>

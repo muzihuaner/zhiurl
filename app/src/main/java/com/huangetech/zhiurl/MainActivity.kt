@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 val getshorturl="https://zhiurl.cn"+jsonObject.getString("key")
                 Log.d("MainActivity", "status is $static")
                 Log.d("MainActivity", "shorturl is $getshorturl")
-                 showResponse(getshorturl)
+                showResponse(getshorturl)
 
         }catch (e:Exception){
             e.printStackTrace()
