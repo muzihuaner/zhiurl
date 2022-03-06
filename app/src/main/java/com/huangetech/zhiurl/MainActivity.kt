@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
-import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.DataOutputStream
@@ -14,6 +13,12 @@ import java.lang.StringBuilder
 import java.net.HttpURLConnection
 import java.net.URL
 import kotlin.concurrent.thread
+import android.widget.Toast
+
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +30,19 @@ class MainActivity : AppCompatActivity() {
         clearurl.setOnClickListener {
             inputurl.setText("")
         }
+      copyurl.setOnClickListener(){
+          copyurldata()
+      }
+    }
+
+   fun copyurldata(getshorturl: String?=null) {
+        //将数据转换为ClipData类
+        val cm = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        //clipData中的this就是需要复制的文本
+
+        val clipData = ClipData.newPlainText("",getshorturl)
+        cm.setPrimaryClip(clipData)
+        Toast.makeText(this, "复制成功，可以发给别人了哦！", Toast.LENGTH_LONG).show();
     }
 
 
@@ -72,6 +90,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("MainActivity", "status is $static")
                 Log.d("MainActivity", "shorturl is $getshorturl")
                 showResponse(getshorturl)
+                copyurldata(getshorturl)
 
         }catch (e:Exception){
             e.printStackTrace()
@@ -79,9 +98,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showResponse(response: String) {
+
         runOnUiThread {
+
 //            在这里进行UI操作，将结果显示在界面上
             ResponseText.setText(response)
+
         }
     }
 }
